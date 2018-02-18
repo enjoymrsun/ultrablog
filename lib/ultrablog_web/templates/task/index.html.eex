@@ -23,8 +23,11 @@
           Assignee
         <% end %>
       </th>
-
+      <%= if @type == 0 do %>
+        <th>Issuer</th>
+      <% end %>
       <th></th>
+
     </tr>
   </thead>
   <tbody>
@@ -34,9 +37,9 @@
         <td><%= task.work_time %></td>
         <td>
           <%= if task.done == 1 do %>
-            <p>Yes</p>
+            <p class="text-success">Yes</p>
           <% else %>
-            <p>No</p>
+            <p class="text-danger">No</p>
           <% end %>
         </td>
         <td>
@@ -46,6 +49,10 @@
             <%= task.assignee.name %>
           <% end %>
         </td>
+        <%= if @type == 0 do %>
+          <td><%= task.issuer.name %></td>
+        <% end %>
+
 
         <td class="text-right">
           <%= if task.assignee_id == @current_user.id || task.issuer_id == @current_user.id do %>

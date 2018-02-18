@@ -30,6 +30,7 @@
 </ul>
 
 <%= if @task.issuer_id == @current_user.id do %>
-  <span><%= link "Edit", to: task_path(@conn, :edit, @task) %></span>
+  <span><%= link "Edit the task", to: task_path(@conn, :edit, @task) %></span>
 <% end %>
+<br>
 <span><%= link "Back", to: task_path(@conn, :index) %></span>

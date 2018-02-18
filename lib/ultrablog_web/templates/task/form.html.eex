@@ -18,8 +18,8 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :assignee_id, "Assignee Id", class: "control-label" %>
-    <%= text_input f, :assignee_id, class: "form-control" %>
+    <%= label f, :assignee_id, "Assignee", class: "control-label" %>
+    <%= select f, :assignee_id, Enum.map(@users, &{&1.email, &1.id}), prompt: "Choose the assignee based on email", class: "form-control" %>
     <%= error_tag f, :assignee_id %>
   </div>
 

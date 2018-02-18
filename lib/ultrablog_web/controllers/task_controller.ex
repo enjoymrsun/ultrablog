@@ -1,6 +1,7 @@
 defmodule UltrablogWeb.TaskController do
   use UltrablogWeb, :controller
 
+  alias Ultrablog.Accounts
   alias Ultrablog.Social
   alias Ultrablog.Social.Task
 
@@ -25,7 +26,8 @@ defmodule UltrablogWeb.TaskController do
 
   def new(conn, _params) do
     changeset = Social.change_task(%Task{})
-    render(conn, "new.html", changeset: changeset)
+    users = Accounts.list_users()
+    render(conn, "new.html", changeset: changeset, users: users)
   end
 
   def create(conn, %{"task" => task_params}) do
@@ -50,7 +52,8 @@ defmodule UltrablogWeb.TaskController do
   def edit(conn, %{"id" => id}) do
     task = Social.get_task!(id)
     changeset = Social.change_task(task)
-    render(conn, "edit.html", task: task, changeset: changeset)
+    users = Accounts.list_users()
+    render(conn, "edit.html", task: task, changeset: changeset, users: users)
   end
 
   def solve(conn, %{"id" => id}) do
@@ -62,11 +65,10 @@ defmodule UltrablogWeb.TaskController do
 
   def update(conn, %{"id" => id, "task" => task_params}) do
     task = Social.get_task!(id)
-
     case Social.update_task(task, task_params) do
       {:ok, task} ->
         conn
-        |> put_flash(:info, "Task updated successfully.")
+        |> put_flash(:success, "Task updated successfully.")
         |> redirect(to: task_path(conn, :show, task))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "solve.html", task: task, changeset: changeset)
@@ -78,7 +80,7 @@ defmodule UltrablogWeb.TaskController do
     {:ok, _task} = Social.delete_task(task)
 
     conn
-    |> put_flash(:info, "Task deleted successfully.")
+    |> put_flash(:success, "Task deleted successfully.")
     |> redirect(to: task_path(conn, :index))
   end
 end
