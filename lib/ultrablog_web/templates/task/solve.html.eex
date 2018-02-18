@@ -1,0 +1,17 @@
+<h2>Solve a Task</h2>
+
+<ul>
+  <li>
+    <strong>Title:</strong>
+    <%= @task.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @task.description %>
+  </li>
+</ul>
+
+<%= render "doneform.html", Map.put(assigns, :action, task_path(@conn, :update, @task)) %>
+
+<span><%= link "Back", to: task_path(@conn, :index) %></span>

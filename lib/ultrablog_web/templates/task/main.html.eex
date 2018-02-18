@@ -1,0 +1,10 @@
+<h1>hello main</h1>
+
+
+<span><%= link "New Task", to: ".." <> task_path(@conn, :new) %></span>
+<br>
+<span><%= link "My Tasks", to: "/main/my_tasks" %></span>
+<br>
+<span><%= link "All Tasks", to: ".." <> task_path(@conn, :index) %></span>
+<br>
+<span><%= link "My Send-Out Tasks", to: "/main/my_send_out_tasks" %></span>

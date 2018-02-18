@@ -1,0 +1,69 @@
+<%= if @type == 0 do %>
+  <h2>All Tasks</h2>
+<% else %>
+  <%= if @type == 1 do %>
+    <h2>My Tasks</h2>
+  <% else %>
+    <%= if @type == 2 do %>
+      <h2>My Send-Out Tasks</h2>
+    <% end %>
+  <% end %>
+<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Work Time</th>
+      <th>Done</th>
+      <th>
+        <%= if @type == 1 do %>
+          Issuer
+        <% else %>
+          Assignee
+        <% end %>
+      </th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for task <- @tasks do %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.work_time %></td>
+        <td>
+          <%= if task.done == 1 do %>
+            <p>Yes</p>
+          <% else %>
+            <p>No</p>
+          <% end %>
+        </td>
+        <td>
+          <%= if @type == 1 do %>
+            <%= task.issuer.name %>
+          <% else %>
+            <%= task.assignee.name %>
+          <% end %>
+        </td>
+
+        <td class="text-right">
+          <%= if task.assignee_id == @current_user.id || task.issuer_id == @current_user.id do %>
+            <span><%= link "Show", to: task_path(@conn, :show, task), class: "btn btn-default btn-xs" %></span>
+          <% end %>
+          <%= if task.assignee_id == @current_user.id do %>
+            <span><%= link "Solve It", to: "/tasks/#{task.id}/solve", class: "btn btn-default btn-xs" %></span>
+          <% end %>
+          <%= if task.issuer_id == @current_user.id do %>
+            <span><%= link "Edit", to: task_path(@conn, :edit, task), class: "btn btn-default btn-xs" %></span>
+            <span><%= link "Delete", to: task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Task", to: task_path(@conn, :new) %></span>
+<br>
+<span><%= link "Back to main", to: "../main" %></span>
