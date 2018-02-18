@@ -14,4 +14,6 @@
 
 <%= render "doneform.html", Map.put(assigns, :action, task_path(@conn, :update, @task)) %>
 
-<span><%= link "Back", to: task_path(@conn, :index) %></span>
+<span><%= link "Back to all tasks", to: task_path(@conn, :index) %></span>
+<br>
+<span><%= link "Back to main", to: ".././main" %></span>

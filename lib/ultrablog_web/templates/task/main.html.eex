@@ -3,15 +3,16 @@
   <%= @current_user.name %>!
 </h1>
 
-<h3>Welcome to the main page for the task tracker app.</h3>
+<h3>Welcome to the main page for the ultrablog's task tracker feature.</h3>
+<p>You can click following links to enjoy the app!</p>
 
 
-<span><%= link "New Task", to: ".." <> task_path(@conn, :new) %></span>
+<span><%= link "Make a New Task", to: ".." <> task_path(@conn, :new) %></span>
 <br>
 <span><%= link "My Tasks", to: "/main/my_tasks" %></span>
 <br>
-<span><%= link "All Tasks", to: ".." <> task_path(@conn, :index) %></span>
-<br>
 <span><%= link "My Send-Out Tasks", to: "/main/my_send_out_tasks" %></span>
+<br>
+<span><%= link "All Tasks", to: ".." <> task_path(@conn, :index) %></span>
 <br>
 <span><%= link "Update User Profile", to: ".." <> user_path(@conn, :edit, @current_user) %></span>

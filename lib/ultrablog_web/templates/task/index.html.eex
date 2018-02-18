@@ -71,6 +71,4 @@
   </tbody>
 </table>
 
-<span><%= link "New Task", to: task_path(@conn, :new) %></span>
-<br>
 <span><%= link "Back to main", to: "../main" %></span>

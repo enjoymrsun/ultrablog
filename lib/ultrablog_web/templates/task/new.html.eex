@@ -2,6 +2,4 @@
 
 <%= render "form.html", Map.put(assigns, :action, task_path(@conn, :create)) %>
 
-<span><%= link "Back", to: task_path(@conn, :index) %></span>
-<br>
 <span><%= link "Back to main", to: ".././main" %></span>

@@ -59,7 +59,7 @@ defmodule UltrablogWeb.TaskController do
   def solve(conn, %{"id" => id}) do
     task = Social.get_task!(id)
     changeset = Social.change_task(task)
-    time_list = [0, 15, 30, 45, 60, 75, 90, 105, 120]
+    time_list = [0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150]
     render(conn, "solve.html", task: task, changeset: changeset, tlist: time_list)
   end
 

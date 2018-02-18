@@ -1,4 +1,4 @@
-<h2>Show User</h2>
+<h2>User Info</h2>
 
 <ul>
 
@@ -14,4 +14,8 @@
 
 </ul>
 
-<span><%= link "Back to main", to: "../main" %></span>
+<%= if @current_user do %>
+  <span><%= link "Back to main", to: "../main" %></span>
+<% else %>
+  <span><%= link "Back to Log in", to: page_path(@conn, :index) %></span>
+<% end %>
