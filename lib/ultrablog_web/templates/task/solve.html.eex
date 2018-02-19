@@ -16,4 +16,4 @@
 
 <span><%= link "Back to all tasks", to: task_path(@conn, :index) %></span>
 <br>
-<span><%= link "Back to main", to: ".././main" %></span>
+<span><%= link "Back to main", to: "../../main" %></span>
