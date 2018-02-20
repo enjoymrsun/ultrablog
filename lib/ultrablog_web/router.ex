@@ -26,7 +26,6 @@ defmodule UltrablogWeb.Router do
     get "/main/my_send_out_tasks", TaskController, :my_send_out_tasks
     get "/tasks/:id/solve", TaskController, :solve
 
-
     post "/session", SessionController, :create
     delete "/session", SessionController, :delete
   end

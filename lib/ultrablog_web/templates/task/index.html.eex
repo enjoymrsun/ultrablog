@@ -27,9 +27,9 @@
         <th>Issuer</th>
       <% end %>
       <th></th>
-
     </tr>
   </thead>
+
   <tbody>
     <%= for task <- @tasks do %>
       <tr>
@@ -52,7 +52,6 @@
         <%= if @type == 0 do %>
           <td><%= task.issuer.name %></td>
         <% end %>
-
 
         <td class="text-right">
           <%= if task.assignee_id == @current_user.id || task.issuer_id == @current_user.id do %>

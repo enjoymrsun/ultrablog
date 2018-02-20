@@ -27,13 +27,13 @@
       </div>
 
       <%= if get_flash(@conn, :info) do %>
-      <p class="alert alert-info alert-dismissable" role="alert"><%= get_flash(@conn, :info) %></p>
+        <p class="alert alert-info alert-dismissable" role="alert"><%= get_flash(@conn, :info) %></p>
       <% end %>
       <%= if get_flash(@conn, :error) do %>
-      <p class="alert alert-danger alert-dismissable" role="alert"><%= get_flash(@conn, :error) %></p>
+        <p class="alert alert-danger alert-dismissable" role="alert"><%= get_flash(@conn, :error) %></p>
       <% end %>
       <%= if get_flash(@conn, :success) do %>
-      <p class="alert alert-success alert-dismissable" role="alert"><%= get_flash(@conn, :success) %></p>
+        <p class="alert alert-success alert-dismissable" role="alert"><%= get_flash(@conn, :success) %></p>
       <% end %>
 
       <main role="main">
